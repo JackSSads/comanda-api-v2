@@ -35,11 +35,8 @@ app.use("/comanda", checkRouter);
 app.use("/produto", productRouter);
 
 io.on("connection", (socket) => {
-    console.log("Usuário conectado", socket.id);
 
-    socket.on("disconnect", () => {
-        console.log("Usuário desconectado", socket.id);
-    });
+    socket.on("disconnect", () => {});
 
     socket.on("novo_pedido", (pedido) => {
         socket.data.pedido = pedido;
@@ -89,6 +86,5 @@ io.on("connection", (socket) => {
 connection
     .then(() => {
         server.listen(process.env.PORT_BACK);
-        console.log("Estamos conectados com o Mongo");
     })
     .catch(() => console.log("Erro ao conectar ao DB"));
