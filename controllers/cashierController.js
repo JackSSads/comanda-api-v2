@@ -20,7 +20,7 @@ module.exports = class CashierController {
                     return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
                 };
             } else {
-                return new Promise(() => res.status(200).json({ data, status: true }));
+                return new Promise(() => res.status(200).json({ data, status: false }));
             };
         } catch (error) {
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
