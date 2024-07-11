@@ -20,7 +20,7 @@ const auth = async (req, res, next) => {
         next();
 
     } catch (error) {
-        return res.status(500).json({ error, message: "Erro ao autenticar" });
+        return res.status(401).json({ message: "Unauthorized access" });
     };
 };
 
