@@ -8,6 +8,7 @@ const cors = require("cors");
 
 const connection = require("./db/connection");
 
+const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/userRouter");
 const checkRouter = require("./routes/checkRouter");
 const loginRouter = require("./routes/loginRouter");
@@ -28,6 +29,7 @@ app.use(cors({
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
 }));
 
+app.use("/check", authRouter);
 app.use("/login", loginRouter);
 app.use("/usuario", userRouter);
 app.use("/caixa", cashierRouter);
