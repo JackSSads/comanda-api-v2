@@ -12,6 +12,7 @@ const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/userRouter");
 const checkRouter = require("./routes/checkRouter");
 const loginRouter = require("./routes/loginRouter");
+const logoutRouter = require("./routes/logoutRouter");
 const cashierRouter = require("./routes/cashierRouter");
 const productRouter = require("./routes/productRouter");
 
@@ -32,6 +33,7 @@ app.use(cors({
 app.use("/check", authRouter);
 app.use("/login", loginRouter);
 app.use("/usuario", userRouter);
+app.use("/logout", logoutRouter);
 app.use("/caixa", cashierRouter);
 app.use("/comanda", checkRouter);
 app.use("/produto", productRouter);
