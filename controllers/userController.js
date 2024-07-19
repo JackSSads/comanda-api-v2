@@ -50,7 +50,7 @@ module.exports = class UserController {
 
             await User.updateOne({ _id: id }, data);
 
-            return new Promise(() => res.status(200).json({ message: "Comanda atualizada", status: true }));
+            return new Promise(() => res.status(200).json({ message: "Usuário atualizado com sucesso", status: true }));
         } catch (error) {
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
