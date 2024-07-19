@@ -64,7 +64,7 @@ module.exports = class UserController {
         try {
             await User.deleteOne({ _id: id });
 
-            return new Promise(() => res.status(200).json({ message: "Usuário deletado", status: true }));
+            return new Promise(() => res.status(200).json({ message: "Usuário deletado com sucesso", status: true }));
         } catch (error) {
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
