@@ -130,3 +130,5 @@ A conexão com o banco de dados é tratada em `./db/connection`. Certifique-se d
 [Bcrypt: 5.1.1](https://www.npmjs.com/package/bcrypt)
 
 [CORS: 2.8.5](https://www.npmjs.com/package/cors)
+---
+### [Link do frontend da aplicação](https://github.com/JackSSads/comanda-v2)

@@ -15,6 +15,7 @@ const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const cashierRouter = require("./routes/cashierRouter");
 const productRouter = require("./routes/productRouter");
+const statusApiRouter = require("./routes/statusApiRouter");
 
 app.use(
     express.urlencoded({
@@ -30,6 +31,7 @@ app.use(cors({
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
 }));
 
+app.use("/", statusApiRouter);
 app.use("/check", authRouter);
 app.use("/login", loginRouter);
 app.use("/usuario", userRouter);
@@ -90,5 +92,6 @@ io.on("connection", (socket) => {
 connection
     .then(() => {
         server.listen(process.env.PORT_BACK);
+        console.log("Estamos conectados na porta", process.env.PORT_BACK);
     })
     .catch(() => console.log("Erro ao conectar ao DB"));
