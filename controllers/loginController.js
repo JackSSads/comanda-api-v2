@@ -2,6 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const logger = require("../logger");
+
 module.exports = class LoginController {
     static async login(req, res) {
 
@@ -11,12 +13,14 @@ module.exports = class LoginController {
             const user = await User.findOne({ email });
 
             if (!user) {
+                logger.error(`Usuário ${email} não encontrado`);
                 return res.json({ message: 'Usuário não encontrado', status: false });
             };
 
             const passCompared = bcrypt.compareSync(pass, user.pass);
 
             if (!passCompared) {
+                logger.error(`Senha incorreta para o usuário ${email}`);
                 return res.json({ message: 'Senha incorreta', status: false });
             };
 
@@ -41,6 +45,7 @@ module.exports = class LoginController {
             };
 
         } catch (error) {
+            logger.error("Erro de autenticação")
             return res.status(500).json({ message: `Erro de autenticação`, status: false });
         };
     };

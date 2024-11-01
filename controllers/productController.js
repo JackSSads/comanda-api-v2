@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const logger = require("../logger");
 
 module.exports = class ProductController {
     static async getAll(req, res) {
@@ -7,6 +8,7 @@ module.exports = class ProductController {
 
             return new Promise(() => res.status(200).json({ data, status: true }));
         } catch (error) {
+            logger.error("productController > getAll() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
     };
@@ -19,6 +21,7 @@ module.exports = class ProductController {
 
             return new Promise(() => res.status(200).json({ data, status: true }));
         } catch (error) {
+            logger.error("productController > getById() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
     };
@@ -27,7 +30,8 @@ module.exports = class ProductController {
         const { nameProduct, value, qnt, totalPrice, category } = req.body;
 
         if (nameProduct === "" || value === "" || qnt === null) {
-            return res.json({ message: "Todos os campos são obrigatórios", status: false });
+            logger.error("productController > create() | Campos obrigatórios não preenchidos");
+            return res.json({ message: "Preencha todos os campos", status: false });
         };
 
         try {
@@ -35,9 +39,11 @@ module.exports = class ProductController {
 
             await Product.create(data);
 
+            logger.info("productController > create() | Produto cadastrado com sucesso");
             return new Promise(() => res.status(200).json({ message: "Produto cadastrado com sucesso", status: true }));
 
         } catch (error) {
+            logger.error("productController > create() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
     };
@@ -51,8 +57,10 @@ module.exports = class ProductController {
 
             await Product.updateOne({ _id: id }, data);
 
+            logger.info("productController > updateById() | Produto atualizado");
             return new Promise(() => res.status(200).json({ message: "Produto atualizado", status: true }));
         } catch (error) {
+            logger.error("productController > updateById() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
     };
@@ -61,14 +69,17 @@ module.exports = class ProductController {
         const { id } = req.params;
 
         if (!id) {
+            logger.error("productController > deleteById() | ID não informado");
             return res.status(404).json({ message: "Cliente ineistente", status: false });
         };
 
         try {
             await Product.deleteOne({ _id: id });
 
+            logger.info("productController > deleteById() | Comanda deletada");
             return new Promise(() => res.status(200).json({ message: "Comanda deletada", status: true }));
         } catch (error) {
+            logger.error("productController > deleteById() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
         };
     };

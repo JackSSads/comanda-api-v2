@@ -1,4 +1,6 @@
-module.exports = class LogoutController {
+const logger = require("../logger");
+
+module.exports = class LogoutController {   
     static async logout(req, res) {
         res.clearCookie('Authorization', {
             httpOnly: true,
@@ -6,5 +8,7 @@ module.exports = class LogoutController {
             sameSite: 'None',
         });
         res.redirect('/login');
+
+        logger.info("User logged out");
     };
 };
