@@ -70,14 +70,14 @@ module.exports = class ProductController {
 
         if (!id) {
             logger.error("productController > deleteById() | ID não informado");
-            return res.status(404).json({ message: "Cliente ineistente", status: false });
+            return res.status(404).json({ message: "Produto ineistente", status: false });
         };
 
         try {
             await Product.deleteOne({ _id: id });
 
-            logger.info("productController > deleteById() | Comanda deletada");
-            return new Promise(() => res.status(200).json({ message: "Comanda deletada", status: true }));
+            logger.info("productController > deleteById() | Produto deletado");
+            return new Promise(() => res.status(200).json({ message: "Produto deletado", status: true }));
         } catch (error) {
             logger.error("productController > deleteById() | Erro ao realizar requizição");
             return new Promise(() => res.status(500).json({ message: "Erro ao realizar requizição", status: false }));
