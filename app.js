@@ -17,6 +17,7 @@ const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const cashierRouter = require("./routes/cashierRouter");
 const productRouter = require("./routes/productRouter");
+const settingRputer = require("./routes/settingRouter");
 const statusApiRouter = require("./routes/statusApiRouter");
 
 // Middleware de logs para requisições HTTP
@@ -47,6 +48,7 @@ app.use("/usuario", userRouter);
 app.use("/logout", logoutRouter);
 app.use("/caixa", cashierRouter);
 app.use("/comanda", checkRouter);
+app.use("/setting", settingRputer);
 app.use("/produto", productRouter);
 
 // Eventos de WebSocket
