@@ -14,8 +14,8 @@ const Settings = mongoose.model("Settings", {
         default: 0
     },
     imagePix: {
-        type: String,
-        default: ""
+        type: String,   // Alterar para buffer
+        default: ""     // Alterar para MIME
     },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
