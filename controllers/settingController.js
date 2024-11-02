@@ -7,6 +7,7 @@ module.exports = class SettingsController {
             establishmentName: "Seu Estabelecimento",
             serviceCharge: false,
             serviceChargePercentage: 0,
+            imagePix: ""
         };
 
         try {
@@ -31,12 +32,14 @@ module.exports = class SettingsController {
             establishmentName,
             serviceCharge,
             serviceChargePercentage,
+            imagePix
         } = req.body;
 
         const data = {
             establishmentName,
             serviceCharge: serviceCharge || false,
             serviceChargePercentage: serviceChargePercentage || 0,
+            imagePix: imagePix || ""
         };
 
         try {
@@ -50,20 +53,22 @@ module.exports = class SettingsController {
 
     static async update(req, res) {
         const {
-            id,
+            _id,
             establishmentName,
             serviceCharge,
             serviceChargePercentage,
+            imagePix
         } = req.body;
 
         const data = {
             establishmentName,
             serviceCharge,
             serviceChargePercentage,
+            imagePix
         };
 
         try {
-            const updatedSettings = await Settings.findByIdAndUpdate(id, data, { new: true });
+            const updatedSettings = await Settings.findByIdAndUpdate(_id, data, { new: true });
             if (!updatedSettings) {
                 logger.error("configController > update() | Erro ao atualizar as configurações. Configuração não encontrada");
                 return res.status(404).json({ message: "Configuração não encontrada" });

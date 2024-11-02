@@ -13,6 +13,10 @@ const Settings = mongoose.model("Settings", {
         type: Number,
         default: 0
     },
+    imagePix: {
+        type: String,
+        default: ""
+    },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
