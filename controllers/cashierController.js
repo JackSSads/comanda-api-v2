@@ -6,8 +6,6 @@ module.exports = class CashierController {
         try {
             const data = await Cashier.findOne();
 
-            console.log("data", data)
-
             if (!data) {
                 try {
 
@@ -17,7 +15,7 @@ module.exports = class CashierController {
 
                     const dataGet = await Cashier.findOne();
 
-                    return new Promise(() => res.status(200).json({ dataGet, status: true }));
+                    return new Promise(() => res.status(200).json({ data: dataGet, status: true }));
 
                 } catch (error) {
                     logger.error("caixaController > get() | Erro ao realizar requizição");
