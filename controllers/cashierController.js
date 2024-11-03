@@ -6,7 +6,9 @@ module.exports = class CashierController {
         try {
             const data = await Cashier.findOne();
 
-            if (data.length <= 0) {
+            console.log("data", data)
+
+            if (!data) {
                 try {
 
                     const data = { comandas: [], totalValue: 0, status: true };
