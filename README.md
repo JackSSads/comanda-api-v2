@@ -35,24 +35,23 @@ Esta API fornece uma aplicação do lado do servidor usando Express.js com capac
 
 4. Certifique-se de que seu banco de dados está em execução e acessível com a string de conexão fornecida.
 
-### Caso queira criar uma imagem Docker:
-1. Criando imagem Docker:
-    ```bash
-    docker build -t <nome_para_a_imagem>.> .
-    ```
-2. Rodando a imagem Docker:
-    ```bash
-    docker run -p <porta_do_host>:<porta_do_container> <nome_para_a_imagem>
-    ```
-    Use a flag `-d` para executar o container em background.
-
-
 ## Uso
 
 Para iniciar o servidor, execute:
 ```bash
 npm start
 ```
+
+### Caso queira criar uma imagem Docker:
+1. Criando imagem Docker:
+    ```bash
+    docker build -t <nome_para_a_imagem> .
+    ```
+2. Rodando a imagem Docker:
+    ```bash
+    docker run -p <porta_do_host>:<porta_do_container> <nome_para_a_imagem>
+    ```
+    Use a flag `-d` para executar o container em background.
 
 O servidor estará rodando na porta especificada em seu arquivo `.env`.
 
