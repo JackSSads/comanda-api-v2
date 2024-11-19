@@ -36,8 +36,8 @@ app.use(express.json());
 app.use(cors({
     origin: [process.env.URL_FRONT],
     credentials: true,
-    methods: "GET, POST, PUT, DELETE",
-    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
 }));
 
 // Rotas
